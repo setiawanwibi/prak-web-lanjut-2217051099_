@@ -39,6 +39,12 @@
                 </div>
 
                 <div>
+
+                    <div style="text-align:center; font-size: 30pt; margin-top:10px; font-weight:bold; color:#ffffff">
+                        <h1>Muhammad Setiawan Wibisono-2217051099</h1>
+                </div>
+
+
                     <div style="text-align:center; font-size: 30pt; margin-top:10px; font-weight:bold;">
                         <h1>Muhammad Setiawan Wibisono-2217051099</h1>
                 </div>
