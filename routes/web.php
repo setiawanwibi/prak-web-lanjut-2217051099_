@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController; // Pastikan huruf 'H' pada 'Http' besar
-use App\Http\Controllers\UserController;    // Tambahkan ini jika belum ada
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController; // pastikan ada import ini
 
 /*
 |--------------------------------------------------------------------------
@@ -15,20 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route ke ProfileController
+Route::get('/', function () {return view('welcome');});
+// Route untuk tugas 2
 Route::get('/profile', [ProfileController::class, 'profile']);
+Route::get('/user/profile', [ProfileController::class, 'profile']);
 
-// Route ke UserController
-Route::get('/user/profile', [UserController::class, 'profile']); // Hapus duplikasi
-
-// Route untuk menampilkan halaman create_user
-Route::get('/user/create', function () {
-    return view('create_user');
-});
-
-// Route untuk menyimpan data dari form user
+// Route untuk tugas 3 & 4
+Route::get('/user/create', function () {return view('create_user');});
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/profile/upload', [ProfileController::class, 'uploadProfilePicture'])->name('upload.profile.picture');
+
+// Route untuk tugas 5
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::resource('users', UserController::class);
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
