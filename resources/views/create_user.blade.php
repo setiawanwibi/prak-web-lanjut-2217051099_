@@ -88,12 +88,10 @@
         }
     </style>
 </head>
-@extends ('layouts.app')
-
-@section('content')
+<body>
 <div class="container">
     <h1>Create User</h1>
-    <form action="/user/store" method="POST">
+    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data"> <!-- enctype sudah ditambahkan -->
         @csrf
         <label for="nama">Nama:</label>
         <input type="text" id="nama" name="nama" required>
@@ -109,8 +107,12 @@
             @endforeach
         </select>
 
+        <!-- Input untuk upload foto -->
+        <label for="foto">Upload Foto:</label>
+        <input type="file" id="foto" name="foto" accept="image/*" required>
+
         <button type="submit">Submit</button>
     </form>
 </div>
-@endsection
+</body>
 </html>

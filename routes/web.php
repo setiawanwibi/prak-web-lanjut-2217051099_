@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; // pastikan ada import ini
+use App\Http\Controllers\ProfileController; // pastikan ada import ini
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::resource('users', UserController::class);
 Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+// Route untuk tugas 6
+Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
