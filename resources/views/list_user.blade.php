@@ -2,151 +2,127 @@
 
 @section('content')
 <style>
-    /* CSS untuk styling tabel pengguna */
     body {
-        background-color: #f1f8e9; /* Warna hijau pastel lembut */
-        background-image: linear-gradient(135deg, #1D3557, #457B9D); /* Gradasi biru tua */
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background-color: #ffffff; /* Warna putih untuk tabel */
-    }
-
-    th, td {
-        padding: 12px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #457B9D; /* Warna biru untuk header */
-        color: white; /* Warna teks header menjadi putih */
-    }
-
-    tr:hover {
-        background-color: #A8DADC; /* Biru muda terang saat hover */
-    }
-
-    /* Gaya untuk tombol */
-    .action-buttons a, .action-buttons button {
-        padding: 8px 12px;
-        border-radius: 4px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-view {
-        background-color: #1D3557; /* Biru tua untuk View */
-    }
-
-    .btn-view:hover {
-        background-color: #003049; /* Biru lebih gelap saat hover */
-    }
-
-    .btn-edit {
-        background-color: #2A9D8F; /* Hijau untuk Edit */
-    }
-
-    .btn-edit:hover {
-        background-color: #21867A; /* Hijau lebih gelap saat hover */
-    }
-
-    .btn-delete {
-        background-color: #dc3545; /* Merah untuk Delete */
-    }
-
-    .btn-delete:hover {
-        background-color: #c82333; /* Merah lebih gelap saat hover */
-    }
-
-    td .action-buttons {
-        display: flex;
-        gap: 10px; /* Spasi antar tombol */
-    }
-
-    td .action-buttons form {
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Soft blue gradient */
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
         margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .page-title {
+        font-size: 40px;
+        font-weight: bold;
+        color: #2c3e50; /* Darker blue-gray */
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow */
     }
 
     /* Tombol Tambah Pengguna Baru */
     .btn-add-user {
-        background-color: #2A9D8F; /* Hijau seperti tombol Edit */
-        padding: 10px 20px;
-        border-radius: 5px;
+        background-color: #1abc9c; /* Greenish teal */
+        padding: 12px 25px;
+        border-radius: 50px;
         color: white;
         font-weight: bold;
         text-decoration: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
     .btn-add-user:hover {
-        background-color: #218838; /* Hijau lebih gelap saat hover */
-        transform: translateY(-2px); /* Efek hover naik sedikit */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan saat hover */
+        background-color: #16a085; /* Darker teal */
+        transform: translateY(-3px); /* Slight lift */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
     }
 
-    /* Styling untuk judul "List Data" */
-    .page-title {
-        font-size: 40px; /* Ukuran font besar */
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .card {
+        width: 20rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 3px solid #1abc9c; /* Accent border */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
         font-weight: bold;
-        color: white; /* Warna teks putih */
-        margin-bottom: 20px;
-        text-align: center; /* Pusatkan teks */
+        font-size: 22px;
+        color: #34495e; /* Soft navy */
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #7f8c8d; /* Light gray */
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 15px;
+        background-color: #2980b9; /* Bright blue */
+        color: white;
+        border-radius: 25px;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #1f6a8a; /* Darker blue */
     }
 </style>
 
-<!-- Judul Halaman -->
-<br>
 <div class="page-title">List Data</div>
 
 <!-- Tombol Tambah Pengguna Baru -->
-<a href="{{ route('users.create') }}" class="btn-add-user mb-3">Tambah Pengguna Baru</a>
+<a href="{{ route('users.create') }}" class="btn-add-user">Tambah Pengguna Baru</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nama</th>
-            <th>NPM</th>
-            <th>Kelas</th>
-            <th>Foto</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($users as $user)
-            <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->nama }}</td>
-                <td>{{ $user->npm }}</td>
-                <td>{{ $user->kelas->nama_kelas ?? 'Kelas Tidak Ditemukan' }}</td>
-                <td>
-                    @if($user->foto)
-                        <img src="{{ asset($user->foto ?? 'uploads/img/default.jpg') }}" alt="Foto Pengguna" width="100">
-                    @else
-                        <span>Foto tidak tersedia</span>
-                    @endif
-                </td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="{{ route('users.show', $user->id) }}" class="btn-view">View</a>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn-edit">Edit</a>
-                        <form action="{{route('user.destroy', $user['id']) }}" method="POST" style="display:inline-block;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"
-                            onclick="return confirm('Apakah anda yakin ingin menghapus user ini?')">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+<!-- Container untuk Card -->
+<div class="card-container">
+    @foreach($users as $user)
+    <div class="card">
+        <!-- Foto Pengguna -->
+        <img src="{{ asset($user->foto ?? 'uploads/img/default.jpg') }}" class="card-img-top" alt="{{ $user->nama }}'s photo">
+        
+        <!-- Body Card -->
+        <div class="card-body">
+            <h5 class="card-title">{{ $user->nama }}</h5>
+            <p class="card-text">NPM: {{ $user->npm }}</p>
+            <p class="card-text">Kelas: {{ $user->kelas->nama_kelas ?? 'Tidak Diketahui' }}</p>
+            <p class="card-text">Jurusan: {{ $user->jurusan ?? 'Tidak Diketahui' }}</p>
+            <p class="card-text">Semester: {{ $user->semester ?? '-' }}</p>
+        </div>
+    </div>
+    @endforeach
+</div>
+
 @endsection
