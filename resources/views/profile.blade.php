@@ -149,6 +149,7 @@
         <div class="profile-pic-container">
             <img class="profile-pic" src="{{ asset($user->foto ?? 'assets/img/default-foto.jpg') }}" alt="Profile Image">
         </div>
+        //Profile Info
         <div class="profile-info">
             <div class="info-item">Nama: {{ $user->nama }}</div>
             <div class="info-item">NPM: {{ $user->npm }}</div>
