@@ -5,7 +5,7 @@
     /* CSS untuk styling tabel pengguna */
     body {
         background-color: #f1f8e9; /* Warna hijau pastel lembut */
-        background-image: linear-gradient(135deg, rgba(241, 248, 233, 1), rgba(214, 234, 214, 1)); /* Gradasi hijau pastel */
+        background-image: linear-gradient(135deg, #1D3557, #457B9D); /* Gradasi biru tua */
     }
 
     table {
@@ -22,12 +22,12 @@
     }
 
     th {
-        background-color: #d4edda; /* Warna hijau pucat untuk header */
-        color: #333; /* Warna teks header */
+        background-color: #457B9D; /* Warna biru untuk header */
+        color: white; /* Warna teks header menjadi putih */
     }
 
     tr:hover {
-        background-color: #c3e6cb; /* Warna hijau terang saat hover */
+        background-color: #A8DADC; /* Biru muda terang saat hover */
     }
 
     /* Gaya untuk tombol */
@@ -43,19 +43,19 @@
     }
 
     .btn-view {
-        background-color: #007bff; /* Biru untuk View */
+        background-color: #1D3557; /* Biru tua untuk View */
     }
 
     .btn-view:hover {
-        background-color: #0056b3; /* Biru lebih gelap saat hover */
+        background-color: #003049; /* Biru lebih gelap saat hover */
     }
 
     .btn-edit {
-        background-color: #28a745; /* Hijau untuk Edit */
+        background-color: #2A9D8F; /* Hijau untuk Edit */
     }
 
     .btn-edit:hover {
-        background-color: #218838; /* Hijau lebih gelap saat hover */
+        background-color: #21867A; /* Hijau lebih gelap saat hover */
     }
 
     .btn-delete {
@@ -77,7 +77,7 @@
 
     /* Tombol Tambah Pengguna Baru */
     .btn-add-user {
-        background-color: #28a745; /* Hijau seperti tombol Edit */
+        background-color: #2A9D8F; /* Hijau seperti tombol Edit */
         padding: 10px 20px;
         border-radius: 5px;
         color: white;
@@ -96,7 +96,7 @@
     .page-title {
         font-size: 40px; /* Ukuran font besar */
         font-weight: bold;
-        color: #333; /* Warna teks */
+        color: white; /* Warna teks putih */
         margin-bottom: 20px;
         text-align: center; /* Pusatkan teks */
     }
@@ -138,12 +138,12 @@
                     <div class="action-buttons">
                         <a href="{{ route('users.show', $user->id) }}" class="btn-view">View</a>
                         <a href="{{ route('users.edit', $user->id) }}" class="btn-edit">Edit</a>
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Delete</button>
-                        </form>
-                    </div>
+                        <form action="{{route('user.destroy', $user['id']) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Apakah anda yakin ingin menghapus user ini?')">Hapus</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

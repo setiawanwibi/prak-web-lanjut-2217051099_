@@ -42,3 +42,5 @@ class UserModel extends Model
         return $query->get();
     }
 }
+
+

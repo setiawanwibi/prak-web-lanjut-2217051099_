@@ -34,3 +34,10 @@ Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('us
 
 // Route untuk tugas 6
 Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
+
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::get('/user', [UserController::class, 'index'])->name('user.list');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+Route::get('/list-user', [UserController::class, 'index'])->name('list.user');
+

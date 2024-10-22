@@ -13,10 +13,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #74ebd5, #ACB6E5); /* Background gradient */
+            background: linear-gradient(135deg, #1D3557, #457B9D); /* Background gradient: Biru tua ke biru muda */
         }
         .container {
-            background-color: white;
+            background-color: #f8f9fa; /* Warna abu-abu terang */
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -24,7 +24,7 @@
             text-align: center;
         }
         h1 {
-            color: #333;
+            color: #1D3557; /* Warna biru tua untuk judul */
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 20px;
@@ -50,15 +50,15 @@
             transition: all 0.3s ease;
         }
         input:focus, select:focus {
-            border-color: #28a745;
-            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+            border-color: #2A9D8F; /* Warna hijau tua */
+            box-shadow: 0 0 5px rgba(42, 157, 143, 0.5); /* Hijau saat fokus */
             outline: none;
         }
         input:hover, select:hover {
             border-color: #999;
         }
         button {
-            background-color: #28a745;
+            background-color: #2A9D8F; /* Warna hijau tua */
             color: white;
             padding: 12px;
             font-size: 16px;
@@ -69,7 +69,7 @@
             transition: all 0.3s ease;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #21867A; /* Hijau lebih gelap saat hover */
             transform: scale(1.05);
         }
         button:active {
@@ -91,7 +91,7 @@
 <body>
 <div class="container">
     <h1>Create User</h1>
-    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data"> <!-- enctype sudah ditambahkan -->
+    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="nama">Nama:</label>
         <input type="text" id="nama" name="nama" required>
@@ -107,7 +107,6 @@
             @endforeach
         </select>
 
-        <!-- Input untuk upload foto -->
         <label for="foto">Upload Foto:</label>
         <input type="file" id="foto" name="foto" accept="image/*" required>
 
